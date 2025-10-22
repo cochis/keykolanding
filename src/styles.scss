@@ -1,1 +1,131 @@
-/* You can add global styles to this file, and also import other style files */
+/* 1. Importa las funciones y variables de Bootstrap */
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+/* 2. Define TU paleta de colores */
+$keyko-dark-blue:   #11224E;
+$keyko-orange:      #F87B1B;
+$keyko-olive-green: #CBD99B;
+$keyko-light-gray:  #EEEEEE;
+
+/* * 3. Sobrescribe el mapa de colores de Bootstrap.
+ * Esto es lo MÁS importante. Ahora `btn-primary`, `text-primary`, `bg-dark`, etc.
+ * usarán automáticamente tus nuevos colores.
+ */
+$theme-colors: (
+  "primary":    $keyko-orange,       // Naranja para CTAs
+  "secondary":  $keyko-olive-green,  // Verde para acentos
+  "success":    $keyko-olive-green,  // Sobrescribimos "success" para los checkmarks
+  "info":       $keyko-olive-green,
+  "warning":    #ffc107,
+  "danger":     #dc3545,
+  "light":      $keyko-light-gray,   // Gris claro para fondos
+  "dark":       $keyko-dark-blue     // Azul oscuro para footer y texto
+);
+
+/* * 4. Asigna variables semánticas (opcional pero recomendado) 
+ * Esto le dice a Bootstrap qué significan tus colores.
+ */
+$primary:       $keyko-orange;
+$secondary:     $keyko-olive-green;
+$light:         $keyko-light-gray;
+$dark:          $keyko-dark-blue;
+
+// También podemos redefinir el color de los encabezados
+$headings-color: $keyko-dark-blue;
+
+
+/* 5. (Opcional) Crea clases de utilidad personalizadas */
+.text-keyko-blue {
+  color: $keyko-dark-blue;
+}
+
+/* 6. Finalmente, importa TODO Bootstrap */
+@import "bootstrap/scss/bootstrap";
+
+/* 7. (Opcional) Tu CSS personalizado adicional aquí */
+.hero-section {
+  /* Fondo del Hero: Imagen + Overlay oscuro (puedes usar tu azul) */
+  background: linear-gradient(rgba(17, 34, 78, 0.7), rgba(17, 34, 78, 0.7)), url('assets/images/logo-keyko.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Ajuste para que el header fijo no tape el contenido */
+main {
+  padding-top: 80px; /* Ajusta esto a la altura de tu header */
+}
+.logo-container {
+  width: 60px; /* <--- NUEVO TAMAÑO */
+  height: 60px; /* <--- NUEVO TAMAÑO */
+  background-color: white; 
+  border: 2px solid $primary; 
+  border-radius: 50%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+  padding: 5px; 
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  /* ... */
+}
+/* ... (todo tu código de SASS de Bootstrap) ... */
+
+/* Estilo para el título del Hero */
+.hero-title {
+  color:#F87B1B;
+  /* Sombra oscura sutil para crear contraste y "pop" */
+  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.6);
+}
+
+/* Estilos para el contenedor de cada imagen de la galería */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; /* Indica que es clickeable */
+  border-radius: 0.5rem; /* Hereda el borde redondeado de .rounded */
+  height: 250px; /* Altura fija para todas las imágenes */
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+    transition: transform 0.3s ease-in-out; /* Transición suave al hacer hover */
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($dark, 0.6); /* Overlay oscuro usando tu color $dark */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Oculto por defecto */
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 0.5rem; /* Igual al de la imagen */
+
+    i {
+      color: white;
+      font-size: 2.5rem; /* Icono de lupa */
+    }
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.05); /* Ligeramente más grande al hacer hover */
+    }
+    .overlay {
+      opacity: 1; /* Muestra el overlay al hacer hover */
+    }
+  }
+}
+
+/* Ajuste para el modal (si es necesario) */
+#modalImage {
+  max-height: 80vh; /* Para que la imagen del modal no sea demasiado alta */
+  width: auto;
+  margin: auto;
+}
