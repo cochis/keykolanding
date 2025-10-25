@@ -54,7 +54,7 @@ export class BookingFormComponent {
     // --- ¡AQUÍ LA NUEVA LÓGICA DE WHATSAPP! ---
 
     // 3. Define tu número de WhatsApp (en formato internacional, ej: 521...)
-    const numeroWhatsApp = '525619582838'; // <-- ¡VERIFICA QUE SEA TU NÚMERO!
+    const numeroWhatsApp = '5520022666'; // <-- ¡VERIFICA QUE SEA TU NÚMERO!
 
     // 4. Formatear la fecha (opcional, pero se ve mejor)
     // El input 'date' da 'YYYY-MM-DD'. Vamos a convertirlo a 'DD/MM/YYYY'
